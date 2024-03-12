@@ -1,0 +1,28 @@
+.course-body{
+  width: calc(100% - 60rpx);
+  margin: 0 30rpx;
+}
+
+.course {
+  padding: 40rpx 0;
+}
+
+.course-bar{
+  margin: 0 10rpx 10rpx;
+  color: #F7F7F7;
+  background-color: #6190E8;
+}
+
+.course-item {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3; /* 控制显示的行数，这里显示3行 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.5; /* 设置合适的行高 */
+  max-height: 300rpx; /* 设置固定高度，这里是3行文本的高度 */
+  position: relative;
+  margin: 20rpx 0rpx;
+  font-size: 32rpx;
+  border: 1px solid gray;
+}

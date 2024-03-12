@@ -1,0 +1,25 @@
+.cart-body .management-body {
+  margin-left: auto; // flex父元素，子元素靠右就设置Left为auto
+  position: relative;
+}
+
+.cart-body .cart-list {
+  margin-right: auto
+}
+
+
+.delete {
+  position:absolute;
+  right: 0;
+}
+
+.block {
+  display: block;
+}
+
+.cart-tabBar{
+  position: absolute;
+  bottom: 0;
+  padding-bottom: 56rpx;;
+  padding-right: 10rpx;;
+}

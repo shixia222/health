@@ -1,0 +1,36 @@
+.article-body {
+  width: calc(100% - 60rpx);
+  margin: 0 30rpx;
+}
+
+.article-content {
+  margin: 40rpx 0;
+}
+
+.reply-item {
+  margin: 20rpx 0;
+}
+
+.reply-item:last-child {
+  margin-bottom: 150rpx;
+}
+
+.article-tabBar {
+  margin: 0;
+  background-color: white;
+  position: fixed;
+  bottom: 0;
+  height: 140rpx;
+}
+
+.reply {
+  padding: 14rpx;
+  box-sizing: border-box;
+  background-color: #F7F7F7;
+  border-radius: 20rpx;
+  color: gray
+}
+
+.icon-fill::before {
+  color: yellow;
+}

@@ -1,0 +1,35 @@
+.mall-body {
+  width: calc(100% - 60rpx);
+  margin: 0 30rpx;
+}
+
+.commodity-type-item {
+  margin: 0 10rpx;
+  font-size: 26rpx;
+}
+
+.mall-navBar {
+  padding: 20rpx 10rpx;
+}
+
+.mall-search {
+  padding: 14rpx;
+  box-sizing: border-box;
+  background-color: #F7F7F7;
+  border-radius: 20rpx;
+  color: gray
+}
+
+.commodity-classifcation {
+  flex-wrap: wrap;
+  height: 300rpx;
+}
+
+.commodityClassifcation-item {
+  text-align: center;
+  border: 4rpx solid #F7F7F7;
+  border-radius: 50%;
+  width: calc(20% - 20rpx);
+  box-sizing: border-box;
+  margin: 10rpx;
+}
