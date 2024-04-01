@@ -1,0 +1,24 @@
+.star-body {
+  width: calc(100% - 60rpx);
+  margin: 0 30rpx;
+}
+
+.star-item {
+  margin: 40rpx 0;
+  border: 1px solid gray;
+}
+
+.management-body {
+  margin-left: auto; // flex父元素，子元素靠右就设置Left为auto
+  position: relative;
+}
+
+.delete-item {
+  margin: 10rpx 10rpx 10rpx auto;
+  position: relative;
+  width: 100rpx;
+  height: 50rpx;
+  border-radius: 20rpx;
+  background-color: red;
+  color: white;
+}

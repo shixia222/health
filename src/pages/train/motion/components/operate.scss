@@ -1,0 +1,26 @@
+.operate-body {
+  width: calc(100% - 60rpx);
+  margin: 0 30rpx;
+  height: 100vh;
+}
+
+.operate-km-data{
+  margin: 100rpx 0;
+  text-align: center;
+  color: white;
+  .km{
+    font-size: 80rpx
+  }
+}
+
+.operate-other-data{
+  color: white;
+  text-align: center;
+  margin: 0 0 100rpx 0;
+}
+
+.operate-setting{
+  color: white;
+  text-align: center;
+  
+}

@@ -20,10 +20,16 @@ export default function Course() {
   const handleClickPlan = () => {
     //跳转到训练计划
     console.log('训练计划')
+    Taro.navigateTo({
+      url: './components/plan/plan'
+    })
   }
   const handleClickStar = () => {
     //跳转到收藏课程
     console.log('收藏课程')
+    Taro.navigateTo({
+      url: './components/star/star'
+    })
   }
 
   const handleClickCourseType = (value) => {
