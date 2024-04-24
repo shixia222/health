@@ -1,4 +1,3 @@
-
 .flex {
   display: flex
 }
@@ -31,4 +30,22 @@
 
 .text-align {
   text-align: center;
+}
+
+.square {
+  color: rgb(99, 98, 98);
+  font-size: 26rpx;
+  margin: 20rpx;
+  padding: 20rpx 0 0 10rpx;
+  height: 120rpx;
+  border: 2rpx solid rgb(204, 204, 204);
+  border-radius: 20rpx;
+}
+
+.font-size-30rpx {
+  font-size: 30rpx;
+}
+
+.font-size-24rpx {
+  font-size: 24rpx;
 }

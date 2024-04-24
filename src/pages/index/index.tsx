@@ -58,7 +58,7 @@ export default function Index() {
             circle
             onClick={() => handleClickArticleType(1)}
           >
-            精选
+            训练
           </AtTag>
           <AtTag
             className='article-bar'
@@ -66,15 +66,15 @@ export default function Index() {
             circle
             onClick={() => handleClickArticleType(2)}
           >
-            文章
+            饮食
           </AtTag>
         </View>
         <View className='article-list'>
-          {articleList.map((item) => {
+          {/* {articleList.map((item) => {
             return <View className='article-item' key={item.value} onClick={() => handleClickArticle(item.value)}>
               {item.content}
             </View>
-          })}
+          })} */}
         </View>
       </View>
       {/* <AtButton type='primary' onClick={handleClickCart}>跳转购物车</AtButton> */}

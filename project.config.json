@@ -2,7 +2,7 @@
   "miniprogramRoot": "dist/",
   "projectname": "App",
   "description": "毕业设计",
-  "appid": "wxac7e88c00ff37683",
+  "appid": "wxf230d7e3077c44a1",
   "setting": {
     "urlCheck": true,
     "es6": false,
@@ -17,7 +17,8 @@
     },
     "minifyWXSS": false,
     "minifyWXML": false,
-    "ignoreUploadUnusedFiles": false
+    "ignoreUploadUnusedFiles": false,
+    "packNpmRelationList": []
   },
   "compileType": "miniprogram",
   "libVersion": "3.3.4",

@@ -7,8 +7,16 @@ export default defineAppConfig({
     'pages/course/components/star/star',
     'pages/train/train',
     'pages/train/motion/motion',
-    'pages/mall/mall',
+    'pages/train/posture/posture',
     'pages/user/user',
+    'pages/user/updates/updates',
+    'pages/user/bodyData/bodyData',
+    'pages/user/setting/setting',
+    'pages/user/setting/components/introduce/introduce',
+    'pages/user/setting/components/username/username',
+    'pages/user/setting/components/city/city',
+    'pages/user/setting/components/email/email',
+    'pages/publish/publish',
     'components/search/search',
     'components/cart/cart',
 
@@ -45,14 +53,14 @@ export default defineAppConfig({
       {
         pagePath: 'pages/train/train',
         text: '训练',
-        iconPath: "./resource/nav/msg-off.png",
-        selectedIconPath: "./resource/nav/msg-on.png"
+        iconPath: "./resource/nav/quan-off.png",
+        selectedIconPath: "./resource/nav/quan-on.png"
       },
       {
-        pagePath: 'pages/mall/mall',
-        text: '商城',
-        iconPath: "./resource/nav/cart-off.png",
-        selectedIconPath: "./resource/nav/cart-on.png"
+        pagePath: 'pages/publish/publish',
+        text: '发布',
+        iconPath: "./resource/nav/msg-off.png",
+        selectedIconPath: "./resource/nav/msg-on.png"
       },
       {
         pagePath: 'pages/user/user',
