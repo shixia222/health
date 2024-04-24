@@ -17,27 +17,18 @@ import { } from 'taro-ui'
 import WeekdayTable from '../../components/date/date'
 
 export default function Train() {
-  const [preferList, setPreferList] = useState(prefer)
+  const [preferList, setPreferList] = useState()
   const handleClickMotion = (value: number) => {
     console.log(value)
     Taro.navigateTo({
       url: `./motion/motion?type=${value}`,
     })
   }
-  const handleCameraClick = async () => {
-    try {
-      const res = await Taro.chooseImage({
-        count: 1, // 最多可以选择的图片张数，这里设置为 1 表示只能拍摄一张照片
-        sourceType: ['camera'], // 从相机拍摄
-      });
-      // res.tempFilePaths 是一个数组，存放用户选择的图片的临时文件路径
-      const tempFilePaths = res.tempFilePaths;
-      // 可以将图片显示在页面上或者进行其他操作
-      console.log(tempFilePaths);
-    } catch (error) {
-      // 错误处理
-      console.error(error);
-    }
+
+  const handleClickPosture = () => {
+    Taro.navigateTo({
+      url: `./posture/posture`,
+    })
   }
 
   return (
@@ -56,18 +47,8 @@ export default function Train() {
           <View style={{ marginTop: 20 + 'rpx' }}>骑行</View>
         </View>
       </View>
-      <View className='date'>
-        <WeekdayTable></WeekdayTable>
-      </View>
       <View className='motion-body-analysis'>
-        <AtButton type='primary' size='normal' onClick={handleCameraClick}>体态分析</AtButton>
-      </View>
-      <View className='motion-prefer'>
-        {preferList.map((item) => {
-          return <View className='perfer-item' key={item.value} >
-            {item.content}
-          </View>
-        })}
+        <AtButton type='primary' size='normal' onClick={handleClickPosture}>体态分析</AtButton>
       </View>
     </View>
   )

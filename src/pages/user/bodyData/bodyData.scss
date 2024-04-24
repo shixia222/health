@@ -1,0 +1,21 @@
+.bodydate-body {
+  height: 100vh;
+  background-color: rgb(243, 243, 243);
+}
+
+.bodydate-info {
+  background-color: white;
+}
+
+.target {
+  width: calc(100% - 40rpx);
+  margin: 40rpx 20rpx;
+  background-color: white;
+  border-radius: 20rpx;
+  height: 120rpx;
+  padding: 16rpx 0 0 16rpx;
+
+  .progress {
+    padding: 0 20rpx 0 0;
+  }
+}

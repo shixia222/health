@@ -5,6 +5,8 @@ import { AtSearchBar } from 'taro-ui'
 import { AtTag } from 'taro-ui'
 import './search.scss'
 import '../../constants/common.scss'
+import { Picker } from '@tarojs/components'
+import { AtList, AtListItem } from 'taro-ui'
 
 export default function Search() {
   const [searchValue, setSearchValue] = useState('')
@@ -17,13 +19,8 @@ export default function Search() {
     console.log('search loaded.')
   })
 
-  const handleChange = (value) => {
-    console.log(searchValue)
-    return value
-  }
-
-  const onActionClick = () => {
-    console.log(searchValue)
+  const handleChange = (e) => {
+    setSearchValue(e)
   }
 
   const handleClean = () => {
@@ -33,22 +30,30 @@ export default function Search() {
   const handleClickTag = (value) => {
     console.log(value)
   }
-
+  var state = {
+    selector: [['a', 'b'], ['c', 'd']],
+    selectorChecked: '美国',
+    timeSel: '12:01',
+    dateSel: '2018-04-22'
+  }
   return (
     <View className='search-body flex column-center flex-column'>
       <View className='search-bar'>
-        <AtSearchBar
-          showActionButton
-          value={searchValue}
-          onChange={handleChange}
-          onActionClick={onActionClick}
-        />
+        <AtSearchBar value={searchValue} onChange={handleChange} placeholder='请输入帖子内容' />
+        <Picker mode='multiSelector' range={state.selector} >
+          <AtList>
+            <AtListItem
+              title='筛选'
+            // extraText={this.state.selectorChecked}
+            />
+          </AtList>
+        </Picker>
         <View className='history-search-body' >
           <View className='at-row at-row__justify--between'>
             <Text className='search-title '>历史搜索</Text>
             <Text className='search-clean' onClick={handleClean}>清除</Text>
           </View>
-          {historyListLen !== 0
+          {/* {historyListLen !== 0
             ?
             <View className='history-search-item flex'>
               {historyList.map((item) => {
@@ -64,10 +69,10 @@ export default function Search() {
                 </AtTag>
               })}
             </View>
-            : '暂无搜索记录'}
+            : '暂无搜索记录'} */}
         </View>
       </View>
-      <View className='hot-search margin-right-auto '>
+      {/* <View className='hot-search margin-right-auto '>
         <View className='at-row at-row__justify--between'>
           <Text className='search-title'>热门搜索</Text>
         </View>
@@ -75,7 +80,7 @@ export default function Search() {
           return <AtTag className='hot-search-item' onClick={() => handleClickTag(item.value)} key={item.value} name={item.label} >{item.label}
           </AtTag>
         })}
-      </View>
+      </View> */}
     </View>
   )
 }

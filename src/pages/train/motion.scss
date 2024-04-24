@@ -9,15 +9,6 @@
   padding-left: 20rpx;
 }
 
-.perfer-item {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3; /* 控制显示的行数，这里显示3行 */
-  overflow: hidden;
-  text-overflow: ellipsis;
-  line-height: 1.5; /* 设置合适的行高 */
-  max-height: 300rpx; /* 设置固定高度，这里是3行文本的高度 */
-  position: relative;
-  margin: 20rpx 0rpx;
-  font-size: 32rpx;
+.motion-body-analysis{
+  margin-top: 100rpx;
 }

@@ -52,16 +52,16 @@ export default function Operate() {
   return (
     <View className='operate-body flex flex-column'>
       <View className='operate-km-data'>
-        <View className='km'>400.00</View>
+        <View className='km'>5.25</View>
         <Text>公里</Text>
       </View>
       <View className='operate-other-data at-row'>
         <View className='other-data-item at-col at-col-3'>
-          <View className='speed'>5</View>
+          <View className='speed'>5.9</View>
           <Text>配速</Text>
         </View>
         <View className='other-data-item at-col at-col-6'>
-          <View className='time'>44.44</View>
+          <View className='time'>31.00</View>
           <Text>用时</Text>
         </View>
         <View className='other-data-item at-col at-col-3'>
