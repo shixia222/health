@@ -1,10 +1,10 @@
-.index-body{
+.index-body {
   width: calc(100% - 60rpx);
   margin: 0 30rpx;
 }
 
-.search-bar{
-  padding:14rpx;
+.search-bar {
+  padding: 14rpx;
   box-sizing: border-box;
   margin-bottom: 20rpx;
   background-color: #F7F7F7;
@@ -12,26 +12,57 @@
   color: gray
 }
 
-.notice-bar{
+.notice-bar {
   margin-bottom: 20rpx;
 }
 
-.article-body .top-bar .article-bar{
+.postDetail-body .top-bar .postDetail-bar {
   margin: 0 10rpx 10rpx;
   color: #F7F7F7;
   background-color: #6190E8;
 }
 
-.article-body .article-list .article-item {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3; /* 控制显示的行数，这里显示3行 */
-  overflow: hidden;
-  text-overflow: ellipsis;
-  line-height: 1.5; /* 设置合适的行高 */
-  max-height: 300rpx; /* 设置固定高度，这里是3行文本的高度 */
-  position: relative;
-  margin: 20rpx 0rpx;
-  font-size: 32rpx;
-  border: 1px solid gray;
+.postDetail-item {
+  margin: 40rpx 10rpx;
+
+  .postDetail-item-userHeader {
+    margin-right: 20rpx;
+  }
+
+  .info-time {
+    margin-top: 12rpx;
+    font-size: 20rpx
+  }
+
+  .postDetail-item-content {
+    .postDetail-item-title {
+      margin-top: 20rpx;
+
+      .title {
+        font-size: 40rpx;
+      }
+    }
+
+    .postDetail-item-contentDetail {
+      margin-top: 10rpx;
+
+      .content {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        /* 控制显示的行数，这里显示3行 */
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: 1.5;
+        /* 设置合适的行高 */
+        max-height: 300rpx;
+        /* 设置固定高度，这里是3行文本的高度 */
+        position: relative;
+        margin: 20rpx 0rpx;
+        font-size: 32rpx;
+      }
+    }
+  }
+
+
 }

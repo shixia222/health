@@ -9,13 +9,18 @@ import Taro from '@tarojs/taro'
 import { AtTabBar } from 'taro-ui'
 import { AtNoticebar } from 'taro-ui'
 import { AtTag } from 'taro-ui'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { indexPostType } from './type'
+import { AtAvatar } from 'taro-ui'
+import { binaryToImg } from '../../tools/tools'
+
 export default function Index() {
-  const [articleList, setArticleList] = useState(article)
-  const [current, setCurrent] = useState(article)
-  useLoad(() => {
-    console.log('Page loaded.')
-  })
+  const [postDetailList, setPostDetailList] = useState<indexPostType[]>([])
+  const [current, setCurrent] = useState()
+
+  const imgLoad = (imgBinary, id) => {
+    return binaryToImg(imgBinary, id)
+  }
 
   const handleClickSearch = () => {
     Taro.navigateTo({
@@ -28,21 +33,49 @@ export default function Index() {
     })
   }
 
-  const handleClickArticleType = (value) => {
-    //更新新的社区文章内容
+  const handleClickPostDetailType = (value) => {
     console.log(value)
   }
 
-  const handleClickArticle = (value) => {
-    //跳转到社区文章详情
+  const handleClickPostDetail = (value) => {
     Taro.navigateTo({
-      url: './components/article/article'
+      url: `./components/postDetail/postDetail?_id=${value}`
     })
-    console.log(value)
   }
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await Taro.request({
+          url: 'http://localhost:4000/api/post/getList',
+          method: 'POST',
+          header: {
+            'Content-Type': 'application/json',
+          },
+          data: { curPage: 1, number: 10 },
+        });
+        const newData = await Promise.all(res.data.data.map(async (item) => {
+          const userHeader = await imgLoad(item.userHeader, item.user_id);
+          let indexImg = ''
+          if (item.img.length !== 0) {
+            indexImg = await imgLoad(item.img[0], item._id);
+          }
+          return { ...item, userHeader, indexImg };
+        }));
+        //@ts-ignore
+        setPostDetailList(newData)
+      } catch (error) {
+        Taro.showToast({
+          title: '没有帖子',
+          icon: 'none',
+        });
+      }
+    };
+    fetchData();
+  }, []);
 
   return (
-    <View className='index-body flex flex-column'>
+    <View className='index-body flex flex-column' >
       <View className='search-bar flex column-center' onClick={handleClickSearch}>
         <View className='at-icon at-icon-search'></View>
         <Text>搜索</Text>
@@ -50,42 +83,50 @@ export default function Index() {
       <AtNoticebar className='notice-bar' marquee>
         这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏
       </AtNoticebar>
-      <View className='article-body'>
+      <View className='postDetail-body'>
         <View className='top-bar'>
           <AtTag
-            className='article-bar'
+            className='postDetail-bar'
             type='primary'
             circle
-            onClick={() => handleClickArticleType(1)}
+            onClick={() => handleClickPostDetailType(1)}
           >
             训练
           </AtTag>
           <AtTag
-            className='article-bar'
+            className='postDetail-bar'
             type='primary'
             circle
-            onClick={() => handleClickArticleType(2)}
+            onClick={() => handleClickPostDetailType(2)}
           >
             饮食
           </AtTag>
         </View>
-        <View className='article-list'>
-          {/* {articleList.map((item) => {
-            return <View className='article-item' key={item.value} onClick={() => handleClickArticle(item.value)}>
-              {item.content}
+        <View className='postDetail-list'>
+          {postDetailList?.map((item) => {
+            return <View className='postDetail-item flex flex-column' key={item._id} onClick={() => handleClickPostDetail(item._id)}>
+              <View className='postDetail-item-userInfo flex'>
+                <View className='postDetail-item-userHeader'>
+                  <AtAvatar image={item.userHeader} size='small' circle={true}></AtAvatar>
+                </View>
+                <View className='postDetail-item-info flex flex-column'>
+                  <Text>{item.username}</Text>
+                  <Text className='info-time'>{item.time}</Text>
+                </View>
+              </View>
+              <View className='postDetail-item-content flex flex-column'>
+                <View className='postDetail-item-title'>
+                  <Text className='title'>{item.title}</Text>
+                </View>
+                <View className='postDetail-item-contentDetail'>
+                  <Text className='content'>{item.content}</Text>
+                </View>
+                <image src={item.indexImg.toString()} />
+              </View>
             </View>
-          })} */}
+          })}
         </View>
       </View>
-      {/* <AtButton type='primary' onClick={handleClickCart}>跳转购物车</AtButton> */}
     </View>
   )
 }
-
-const article = [{
-  content: "文章包括各种文体的著作、作品，如诗歌、戏剧、小说、科学论文，记叙文、议论文、说明文、应用文等等。“千古文章未尽才”“文章千古事”“文章憎命达”“板凳要坐十年冷、文章不写一字空”“积句而成章，积章而成篇”“言出为论，下笔成章”等，都是现在所说的文章的意思。更广义的文章，也包含“学问”“奥秘”等意思，如“洞明世事皆学问，人情练达即文章”就是。",
-  value: 1
-}, {
-  content: "“文章”的“章”字，是个会意字，从音从十。古代奏音乐，连奏十段才能结束（十，数之终也），这十段乐就是一章。所以，文章文章，也有段落。文章既从“音乐”里会意出来，应是用文字表达出来的东西，读起来如音乐一样美妙无穷、悦耳动听的文字，传诵开来，才配得上“文章”一词的真正含义。",
-  value: 2
-}]

@@ -1,7 +1,7 @@
 export default defineAppConfig({
   pages: [
     'pages/index/index',
-    'pages/index/components/article/article',
+    'pages/index/components/postDetail/postDetail',
     'pages/course/course',
     'pages/course/components/plan/plan',
     'pages/course/components/star/star',

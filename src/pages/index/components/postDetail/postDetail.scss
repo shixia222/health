@@ -1,0 +1,62 @@
+.postDetail-body {
+  width: calc(100% - 60rpx);
+  margin: 0 30rpx;
+}
+
+.postDetail-content {
+  margin: 40rpx 0;
+}
+
+.reply-item {
+  margin: 20rpx 0;
+}
+
+.reply-item:last-child {
+  margin-bottom: 150rpx;
+}
+
+.postDetail-item-title {
+  margin: 0;
+  background-color: white;
+  position: fixed;
+  top: 0;
+  width: calc(100% - 60rpx);
+  height: 60rpx;
+  font-size: 40rpx;
+}
+
+.postDetail-item-userInfo {
+  margin: 80rpx 0;
+
+  .postDetail-item-userHeader {
+    margin-left: 40rpx;
+  }
+
+  .postDetail-item-info {
+    margin-left: 30rpx;
+    ;
+  }
+}
+
+.info-time {
+  margin: 40rpx 0 40rpx 20rpx;
+  font-size: 20rpx
+}
+
+.reply-list{
+  margin-bottom: 140rpx
+}
+
+.post-tabBar {
+  margin: 0;
+  background-color: white;
+  position: fixed;
+  bottom: 0;
+  height: 140rpx;
+}
+
+
+
+.icon-fill::before {
+  color: yellow;
+}

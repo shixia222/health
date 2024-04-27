@@ -57,6 +57,7 @@ function App({ children }: PropsWithChildren<any>) {
                     success: function (res) {
                       // 将临时文件路径赋值给图片组件的 src 属性，展示用户头像
                       Taro.setStorageSync('userInfo', { ...userDetailsRes.data[0], header: wx.env.USER_DATA_PATH + '/avatar.jpg' })
+                      Taro.setStorageSync('userHeader', userDetailsRes.data[0].header)
                     },
                     fail: function (error) {
                       console.error('Failed to write avatar file:', error);

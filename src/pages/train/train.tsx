@@ -1,7 +1,7 @@
 import { View, Text } from '@tarojs/components'
 import { useLoad, useReady, useRouter } from '@tarojs/taro'
 import '../../constants/common.scss'
-import './motion.scss'
+import './train.scss'
 import { AtButton } from 'taro-ui'
 import { AtIcon } from 'taro-ui'
 import { AtSearchBar } from 'taro-ui'

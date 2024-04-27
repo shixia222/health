@@ -15,67 +15,80 @@ import { AtList, AtListItem } from "taro-ui"
 import { AtTabs, AtTabsPane } from 'taro-ui'
 import { UPDATESTYPE } from '../../../constants/common'
 import classNames from 'classnames'
-import { updateType } from './updateType'
+import { updateType, replyType } from './updateType'
 
 export default function Updates() {
-  const tabList = [{ title: '动态', index: UPDATESTYPE.UPDATES }, { title: '评论', index: UPDATESTYPE.COMMENT }]
+  const tabList = [{ title: '动态', index: UPDATESTYPE.UPDATES }, { title: '回复', index: UPDATESTYPE.COMMENT }]
   const [current, setCurrent] = useState(0)
-  const [tagChoice, setTagChoice] = useState(0)
   const [updates, setUpdates] = useState<updateType[]>([])
+  const [reply, setReply] = useState<replyType[]>([])
   const handleClickTabs = (value) => {
     setCurrent(value)
   }
-  const handleClickTag = (value) => {
-    setTagChoice(value)
+
+  const tagGetReplies = () => {
+    Taro.request({
+      url: 'http://localhost:4000/api/reply/getListByUserId',
+      method: 'POST',
+      header: {
+        'Content-Type': 'application/json',
+      },
+      data: { user_id: Taro.getStorageSync('openid') },
+      success: (res) => {
+        setReply(res.data.data)
+      }
+    });
   }
-  const tagGetUpdates = () => {
-    let tempUpdates = []
-    switch (tagChoice) {
-      case UPDATESTYPE.UPDATES: {
-        tempUpdates = collect;
-        break;
+  const fetchUpdateData = () => {
+    Taro.request({
+      url: 'http://localhost:4000/api/moment/getDetails',
+      method: 'POST',
+      header: {
+        'Content-Type': 'application/json',
+      },
+      data: {
+        user_id: Taro.getStorageSync('openid')
+      },
+      success: (res) => {
+        setUpdates(res.data[0].moment_content)
       }
-      case UPDATESTYPE.COMMENT: {
-        tempUpdates = star;
-        break;
-      }
-    }
-    setUpdates(tempUpdates)
+    })
+
+    // setUpdates(tempUpdates)
   }
   useEffect(() => {
-    //根据Current请求数据
-    tagGetUpdates()
-  }, [tagChoice])
+    fetchUpdateData()
+    tagGetReplies()
+  }, [])
+
   return (
     <View className='updates-body flex flex-column'>
       <AtTabs current={current} tabList={tabList} onClick={handleClickTabs}>
         <AtTabsPane current={current} index={UPDATESTYPE.UPDATES} >
           <View style='background-color: #FAFBFC;text-align: center;' >
-            <View className='top-bar flex'>
+            <View className='top-bar flex' style={{ marginBottom: 20 + 'rpx' }}>
               <AtTag
-                className={classNames('tag', { 'choice-tag': tagChoice == 0 })}
+                className={'tag choice-tag'}
                 type='primary'
                 circle
-                onClick={() => handleClickTag(0)}
-              >
-                收藏
-              </AtTag>
-              <AtTag
-                className={classNames('tag', { 'choice-tag': tagChoice == 1 })}
-                type='primary'
-                circle
-                onClick={() => handleClickTag(1)}
               >
                 赞过
               </AtTag>
             </View>
-            {updates.map((item) => {
-              return <View>{item.content}</View>
-            })}
+            <AtList>
+              {updates?.map((item) => {
+                return <AtListItem title={`帖子标题：${item.post_title}`} key={item.post_id} />
+              })}
+            </AtList>
           </View>
         </AtTabsPane>
         <AtTabsPane current={current} index={UPDATESTYPE.COMMENT} >
-          <View style='background-color: #FAFBFC;text-align: center;' >
+          <View className='reply-list' >
+            <AtList>
+              {reply?.map((item) => {
+                return <AtListItem title={`内容：${item.content}`} note={item.time} key={item._id} />
+              })}
+            </AtList>
 
           </View>
         </AtTabsPane>

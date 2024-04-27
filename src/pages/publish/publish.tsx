@@ -53,14 +53,14 @@ export default function Pubilsh() {
   }
 
   const handleClickPublish = () => {
-    const time = moment(new Date()).format("YYYY-M-D HH:mm:ss");
+    const time = moment(new Date()).format("YYYY/M/D HH:mm:ss");
     Taro.request({
       url: 'http://localhost:4000/api/post/addPost',
       method: 'POST',
       header: {
         'Content-Type': 'application/json',
       },
-      data: { user_id: Taro.getStorageSync('openid'), title, content, img: images, time, type },
+      data: { user_id: Taro.getStorageSync('openid'), username: user.username, userHeader: Taro.getStorageSync('userHeader'), title, content, img: images, time, type },
     }).then(() => {
       Taro.atMessage({
         'message': '发布成功',
